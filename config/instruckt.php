@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Enable instruckt
@@ -12,13 +13,35 @@ return [
     */
     'enabled' => (bool) env('INSTRUCKT_ENABLED', env('APP_ENV') === 'local'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Route prefix
+    |--------------------------------------------------------------------------
+    | All HTTP API routes will be registered under this prefix.
+    */
     'route_prefix' => env('INSTRUCKT_ROUTE_PREFIX', 'instruckt'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Middleware
+    |--------------------------------------------------------------------------
+    | Separate middleware stacks for the annotation API and the MCP endpoint.
+    */
     'api_middleware' => explode(',', env('INSTRUCKT_MIDDLEWARE', 'api')),
     'mcp_middleware' => explode(',', env('INSTRUCKT_MCP_MIDDLEWARE', 'web')),
 
+    /*
+    |--------------------------------------------------------------------------
+    | MCP token
+    |--------------------------------------------------------------------------
+    */
     'mcp_token' => env('INSTRUCKT_MCP_TOKEN', null),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Storage driver
+    |--------------------------------------------------------------------------
+    */
     'store' => env('INSTRUCKT_STORE', env('APP_ENV') === 'local' ? 'file' : 'database'),
 
     'screenshot_disk' => env('INSTRUCKT_SCREENSHOT_DISK', 'local'),
@@ -49,4 +72,5 @@ return [
     ],
 
     'mcp_prefix' => 'instruckt',
+
 ];
